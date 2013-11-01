@@ -17,9 +17,7 @@
 namespace XLite\Module\Pilat\DisableInventory;
 
 /**
- * Module description
- *
- * @package XLite
+ * Main module class
  */
 abstract class Main extends \XLite\Module\AModule
 {
