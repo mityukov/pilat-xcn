@@ -18,8 +18,6 @@ namespace XLite\Module\Pilat\ExpandRootCats\View;
 
 /**
  * Sidebar categories list
- * 
- * @ListChild (list="sidebar.first", zone="customer", weight="100")
  */
 abstract class TopCategories extends XLite\View\TopCategories implements \XLite\Base\IDecorator
 {
@@ -32,19 +30,8 @@ abstract class TopCategories extends XLite\View\TopCategories implements \XLite\
     protected function defineWidgetParams()
     {
         parent::defineWidgetParams();
-
-        $rootId = $this->getDefaultCategoryId();
-
-        $this->widgetParams += array(
-            self::PARAM_DISPLAY_MODE => new \XLite\Model\WidgetParam\Set(
+        $this->widgetParams[parent::PARAM_DISPLAY_MODE] = new \XLite\Model\WidgetParam\Set(
                 'Display mode', static::DISPLAY_MODE_TREE, true, $this->displayModes
-            ),
-            self::PARAM_ROOT_ID => new \XLite\Model\WidgetParam\ObjectId\Category(
-                'Parent category ID (leave "' . $rootId . '" for root categories list)', $rootId, true, true
-            ),
-            self::PARAM_IS_SUBTREE => new \XLite\Model\WidgetParam\Bool(
-                'Is subtree', false, false
-            ),
-        );
+            );
     }
 }
